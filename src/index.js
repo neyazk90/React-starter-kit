@@ -1,14 +1,10 @@
 import React from 'react';
-// import ReactDOM from "react-dom/client";
-// import { BrowserRouter } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './index.css';
-// import App from './App';
 import Home from './components/Home';
 import About from './components/About';
-// import Layout from './components/Layout';
 import Listing from './components/Listing';
 import PageNotFound from './components/PageNotFound';
 import reportWebVitals from './reportWebVitals';

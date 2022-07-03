@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { Outlet, Link } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import './App.css';
@@ -25,6 +25,7 @@ function App() {
 					</ul>
 				</nav>
 				<Outlet />
+				<ReactQueryDevtools initialIsOpen={false} />
 			</QueryClientProvider>
 		</ChakraProvider>
 	);
