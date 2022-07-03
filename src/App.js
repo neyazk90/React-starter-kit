@@ -1,57 +1,33 @@
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ChakraProvider ,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Box,
-} from "@chakra-ui/react";
-import "./App.css";
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import { Outlet, Link } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
+import './App.css';
 
 function App() {
-  const queryClient = new QueryClient();
-  return (
-    <ChakraProvider>
-      <QueryClientProvider client={queryClient}>
-        <Accordion>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  Section 1 title
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </AccordionPanel>
-          </AccordionItem>
+	const queryClient = new QueryClient();
+	return (
+		<ChakraProvider>
+			<QueryClientProvider client={queryClient}>
+				<h1>Welcome to React Router!</h1>
+				<nav className="header-nav">
+					<ul>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
 
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  Section 2 title
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
-      </QueryClientProvider>
-    </ChakraProvider>
-  );
+						<li>
+							<Link to="/posts">All Posts</Link>
+						</li>
+						<li>
+							<Link to="/about">About</Link>
+						</li>
+					</ul>
+				</nav>
+				<Outlet />
+			</QueryClientProvider>
+		</ChakraProvider>
+	);
 }
 
 export default App;
