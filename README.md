@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Es-Lint,Prettier and HUSKY
+https://dev.to/yvad60/setup-eslint-prettier-and-husky-in-a-node-project-a-step-by-step-guide-946
+
 ### `npm start`
 
 Runs the app in the development mode.\
