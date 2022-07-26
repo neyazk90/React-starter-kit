@@ -11,18 +11,23 @@ import {
 	Text,
 	useToast,
 } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/button';
+import { useParams } from 'react-router';
 
 const getPost = async () => {
 	try {
-		const Response = await axios.get('https://gorest.co.in/public/v2/posts');
+		const Response = await axios.get(`https://gorest.co.in/public/v2/posts`);
 		return Response;
 	} catch (error) {
 		throw error('Fetching Error');
 	}
 };
-function Listing() {
+const Listing = () => {
+	const { id } = useParams();
+
+	const pageID = Number(id);
 	const toast = useToast();
-	const { data, isLoading } = useQuery('fetchPost', getPost, {
+	const { data, isLoading } = useQuery('fetchPost', () => getPost(pageID), {
 		onError: (error) => {
 			toast({ status: 'error', title: error.message });
 		},
@@ -34,6 +39,12 @@ function Listing() {
 				<Grid placeItems="center" height="100vh">
 					<Spinner />
 				</Grid>
+			)}
+			{!isLoading && (
+				<Flex justify="space-between">
+					<Button colorScheme="red">Prev</Button>
+					<Button colorScheme="green">Next</Button>
+				</Flex>
 			)}
 
 			{!isLoading &&
@@ -56,6 +67,6 @@ function Listing() {
 				))}
 		</Container>
 	);
-}
+};
 
 export default Listing;
